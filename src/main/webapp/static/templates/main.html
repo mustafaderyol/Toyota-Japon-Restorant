@@ -1,0 +1,47 @@
+    <div id="header">
+        <img src="images/a.jpg" class="bckgrnd2" width="100%" height="70">
+        <div id="header_in">
+            <div style="float:left; height:55px;">
+                <img src="images/toyota_logo.png" width="220" height="55" id="logo">
+            </div>
+            <div id="main_buttons">
+                <a href="static/upload/monthmenu.doc" class="button button-blue under">
+                    <span><%= monthlyMenu %></span>
+                </a>
+                <a href="static/upload/help.doc" class="button button-blue under">
+                    <span><%= help %></span>
+                </a>
+                <a href="#logout" class="button button-blue under">
+                    <span><%= exit %></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+    <div id="main2_buttons">
+        <img src="images/b.jpg" width="100%" height="40" class="bckgrnd">
+            <div id="main2_buttons_in">
+                <a href="#main/makersrv" class="button button-blue" id="main2_button">
+                    <span><%= makeRsrv %></span>
+                </a>
+                <a href="#main/rsrvQuery" class="button button-blue searchrsrv" id="main2_button">
+                    <span><%= queryRsrv %></span>
+                </a>
+                <% if(authority=="admin"){ %>
+                <a href="#main/rsrvUpload" class="button button-blue" id="main2_button">
+                    <span><%= updateRsrv %></span>
+                </a>
+                <a href="#main/restaurant" class="button button-blue" id="main2_button">
+                    <span><%= uploadRest %></span>
+                </a>
+                <a href="#main/uploadfile" class="button button-blue" id="main2_button">
+                    <span><%= fileUpload %></span>
+                </a>
+                <% } %>
+                <div style="float: right; margin-right: 10px; color: #F30;"><%= langUser %>: <span id="userusernamename" style="color:#000;"></span> <%= langAut %>:<span id="rolrol" style="color:#000;"></span> </div>
+            </div>
+    </div>
+    <div id="lang_div">
+        <button class="language_but" id="tr">TR</button>
+        <button class="language_but" id="eng">ENG</button>
+    </div>

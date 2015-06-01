@@ -1,0 +1,15 @@
+<div id="container">
+    <div id="title"><%= title %></div>
+    <div style="width: 600px; min-height: 110px; margin: 0 auto; line-height: 50px; color:#FFF; background: #000;">
+        <form id="upload" action="../../../jpnrest/api/upldMonthly/upload" enctype="multipart/form-data" method="post">
+            <%= mountUpload %>: <input type="file" required="required" name="file" id="mountUpload">
+            <input type="submit" value="<%= uploadFile %>">
+        </form>
+
+        <form id="upload" action="../../../jpnrest/api/uploadHelp/upload" enctype="multipart/form-data" method="post">
+        <%= helpUpload %> : <input type="file" required="required" name="file" id="helpUpload">
+            <input type="submit" value="<%= uploadFile %>">
+        </form>
+    </div>
+    <div style="clear: both;"></div>
+</div>

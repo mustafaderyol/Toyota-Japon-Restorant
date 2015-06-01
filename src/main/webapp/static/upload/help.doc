@@ -1,0 +1,262 @@
+/* use ile kullanmak istediğimiz veritabanını belirtip go ile ona gidiyoruz */
+use veritabani_adi
+go
+
+----------------------------------
+/* tablo oluşturma kolonları belirleme */
+create table musteri (musteri_no int, musteri_adi varchar(20), musteri_soyad varchar(20))
+
+----------------------------------
+/* alter => tablo üzerinde değişiklik yapmayı sağlıyor */ 
+alter table musteri alter column musteri_no int not null
+
+----------------------------------
+/* primary key atama */
+alter table musteri ADD CONSTRAINT Pk_mus PRIMARY KEY (musteri_no)
+
+----------------------------------
+/* tabloyu silmek için */
+drop table musteri
+
+----------------------------------
+/* tabloya veri eklemek için kullanılır */
+insert into musteri (musteri_no, musteri_adi, musteri_soyad) values(4, 'uygar', 'köroğlu')
+
+----------------------------------
+/* tabloda güncelleme yapmak için kullılır */
+update musteri SET musteri_adi = 'UYGAR' where musteri_adi = 'uygar'
+
+----------------------------------
+/* ülke isimlerini tekrar tekrar yazma sadece bir kere yaz */
+select distinct(Country) from Customers
+
+----------------------------------
+/* where ile koşul belirtiyoruz  - şehri london olanları göster*/
+select * from Employees where City='London'
+
+----------------------------------
+/* and / or  kullanımı lojik mantık gibi */
+select * from Employees where City='London' or/and Country='usa'
+
+----------------------------------
+/* city London olmayanlar */
+select * from Employees where City <> 'London'
+
+----------------------------------
+/* ismin ilk harfi m ve n aralığında olanlar */
+select * from Employees where FirstName between 'm' and 'n'
+
+----------------------------------
+/* LIKE kullanımı - içinde m geçenler */
+select * from Employees where FirstName like '%m%'
+
+----------------------------------
+/* boş/dolu kayıtrı göster */
+select * from Employees where Region is not NULL
+
+----------------------------------
+/* ORDER BY  xxxx  asc/desc komutu ile sıralama işlemi yapılıyor */
+select * from Products order by ProductName desc
+/* order by için birden fazla değer girilirse sıraya göre sıralar */
+select * from Employees order by City, FirstName
+----------------------------------
+/* ilk 10 veriyi listele */
+select top 10 * from Products
+
+----------------------------------
+/* ortalama hesabı - ürünlerin birim fiyatlarının ortalaması */
+select AVG(UnitPrice) from Products
+
+----------------------------------
+/* MAX/MIN deger dondurme */
+select MIN/MAX(UnitPrice) from Products
+
+----------------------------------
+/* ürün fiyatlarının toplamu SUM */
+select SUM(UnitPrice) from Products
+
+----------------------------------
+/* kaç adet veri döndüğünü saymak için COUNT */
+select COUNT(*) from Orders
+
+----------------------------------
+/* önce aynı olanları çıkarıp sonra saydır */
+select COUNT(DISTINCT(ShipCountry)) from Orders
+
+-----------------------------------
+/* her bir müşterinin ne kadar nakliye bedeli var */
+Select CustomerID, SUM(Freight) from Orders group by CustomerID
+
+-----------------------------------
+/* her bir müşterinin hangi nakliye firması ile ne kadar nakliye bedeli var */
+Select CustomerID, SUM(Freight), ShipVia from Orders group by CustomerID, ShipVia
+
+-----------------------------------
+/* having ile group by dan sonra koşul yazılabilir - as toplam ile de SUM(Fre..) isim veriyoruz*/
+Select CustomerID, SUM(Freight)as toplam from Orders group by CustomerID having (SUM(Freight)<100)
+
+-----------------------------------
+/* group by dan sonra koşul eklemeye devam sıralama yaptırıyoruz bir de */
+Select CustomerID, SUM(Freight)as toplam from Orders group by CustomerID having (SUM(Freight)<100) order by CustomerID desc
+
+-----------------------------------
+/* aranan bir veri tek bir tablodan elde edilemiyorsa bağlantı kurmak gerekir -  INNER JOIN */
+/* hangi ürün hangi kategoride, kategoride id yerine ismi yazması için birleştiririz */
+select p.ProductName, c.CategoryName 
+from Products as p INNER JOIN Categories as c
+on p.CategoryID = c.CategoryID
+
+-----------------------------------
+/* iç içe sorgular örnek kullanım aşağıdaki gib */
+select * from Products where UnitPrice=(select AVG(UnitPrice) From Products)
+ 
+-----------------------------------
+/* iki tablonun ortak özelliklerini kullanarak tek bir tablo oluşturma */
+select CompanyName, ContactName, Address,'Müşteri' as tip from Customers
+union
+select CompanyName, ContactName, Address, 'Tedarikçi' as tip from Suppliers
+
+-----------------------------------
+/* inner join ile iki tabloyu ortak bir nitelik üzerinden bağlama */
+select p.ProductName, s.CompanyName  
+from Products as p,Suppliers as s where p.SupplierID=s.SupplierID
+ --inner join ile yazılışı ise
+ select p.ProductName, s.CompanyName  
+ from Products as p inner join Suppliers as s on p.SupplierID=s.SupplierID
+
+-----------------------------------
+/* hangi siperiş hangi kargo şirketi ile ne zaman */
+select OrderID, OrderDate, CompanyName from Orders as o 
+inner join Shippers as s on o.ShipVia = s.ShipperID
+
+-----------------------------------
+/* hangi sipariş hangi müşteri ve hangi çalışan tarafından eklenmiş */
+Select OrderID, CompanyName, FirstName, LastName from Orders as o
+join Customers as c on o.CustomerID=c.CustomerID 
+join Employees as e on o.EmployeeID=e.EmployeeID
+
+-----------------------------------
+/* hangi ürün hangi kategori hangi tedarikçi */
+Select ProductName, CategoryName, CompanyName from Products as p
+join Categories as c on c.CategoryID=p.CategoryID
+join Suppliers as s on s.SupplierID=p.SupplierID
+
+-----------------------------------
+/* hangi sipariş hangi müşteri hangi çalışan hangi tarihte hangi kargo şirketi
+	hangi üründen kaç adet satılmış hangi fiyattan hangi kategoride hangi tedarikçi */
+
+/* shippers, employes, suppliers, categories, products, order detail, orders, customers*/
+
+SELECT     Orders.OrderID, Customers.CompanyName, Employees.FirstName, Employees.LastName, Orders.OrderDate, Suppliers.CompanyName AS Expr1, 
+                      [Order Details].Quantity, [Order Details].UnitPrice, Categories.CategoryName
+FROM         Orders INNER JOIN
+                      Customers ON Orders.CustomerID = Customers.CustomerID INNER JOIN
+                      Employees ON Orders.EmployeeID = Employees.EmployeeID INNER JOIN
+                      [Order Details] ON Orders.OrderID = [Order Details].OrderID INNER JOIN
+                      Products ON [Order Details].ProductID = Products.ProductID INNER JOIN
+                      Categories ON Products.CategoryID = Categories.CategoryID INNER JOIN
+                      Suppliers ON Products.SupplierID = Suppliers.SupplierID
+
+-----------------------------------
+/* VIEW birden fazla tabloyu birleştirip tek bir tabloymuş gibi kullanmamızı sağlar */
+/* aşağıdaki şekildeki gibi yazılıp oluşturulur */
+create view viewadi 
+as
+sorgu
+
+--ekleme işlemi aynı zamanda kullanılan tablolara da ekleme yapar
+insert into  musteriListele
+values('AYSAN','Aysan Müh.','İstanbul','Türkiye')
+
+--silme
+drop view musteriListele
+
+-----------------------------------
+/* fonksiyon - parametre gönderip geri değer döndürmek için kullanılır, matematiksel fonk. gibi */
+/*  örnek yazım şekli aşağıdaki gibi */
+create function kareal(@sayi int)
+returns int  --s takısı var !!!
+
+as
+
+begin
+	declare @sonuc int set @sonuc=@sayi*@sayi --declare değişken tanımlamak için	
+	return @sonuc
+end
+
+-- çalıştırırken
+select dbo.kareal(5)
+
+--silmek için
+drop function kareal
+-----------------------------------
+/* store procedure - uzun sorguları tekrar yazmak yerine stored procedure olarak yazıp sadece ismiyle çağırımak için */
+
+create procedure deneme
+as
+select * from Products
+where UnitsInStock < 60 and CategoryID = 1
+
+--calıştırmak için 
+execute deneme
+
+-- procedure sonucunda dönen değerleri Shippers tablosuna ekle
+insert into Shippers
+execute deneme
+
+--alter procedure deneme -diyerek güncelleyebiliriz
+
+--parametre alan procedure
+alter procedure deneme2
+@ContactTitle nvarchar(30)
+as
+select CompanyName, Phone from Suppliers
+where ContactTitle = @ContactTitle
+
+--parametreli procedure çalıştırılırken
+execute deneme2 @ContactTitle = 'Sales Manager'
+-----------------------------------
+
+/*trigger kullanımı*/
+--genel yapısı
+create trigger adi
+on tabloadi
+for/after/instead of (insert/update/delete)
+as
+sql ifadesi
+
+--örnek kullanımı - kitabın basım tarihini güncelleyen
+create trigger tarihekle
+on Kitap
+after insert
+as
+update kitap SET [basim tarihi] = 2007
+where kitap_id = (select kitap_id from inserted)
+--inserted RAM'de oluşan geçici tablodur silme işleminde de deleted isminde oluşur
+-- update işlemi için bu iki tablodan herhangi biri kullanılabilir
+
+-- bir örnek kullanım daha
+create trigger musteriSilme
+on Musteri
+instead of delete --silme işleminin yerine aşağıdaki sorguyu yap
+as
+update Musteri set silmegirisimi = GETDATE();
+where musteriid  in(select musteriid from deleted) --in koyulması ise birden fazla silme işlemi olması durumda
+
+--çalıştırırken
+delete from Musteri where musteriid = 3
+--------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,70 @@
+<div id="container">
+    <div id="title"><%= title %></div>
+    <div id="rsrvupload">
+        <div id="rsrvupload_left">
+            <span id="span_username"></span><br>
+            <table id="rsrvQuery_table">
+                <thead>
+                    <tr>
+                        <th><%= date %></th>
+                        <th><%= meal %></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>   <br><br>
+            <table id="rsrvQuery_table2">
+                <tr>
+                    <th> </th>
+                    <th><%= breakfast %></th>
+                    <th><%= launch %></th>
+                    <th><%= dinner %></th>
+                </tr>
+                <tr id="Mealsum">
+                    <td><%= total %>:</td>
+                    <td id="brkfst"></td>
+                    <td id="lnch"></td>
+                    <td id="dnnr"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="rsrvupload_right">
+            <table width="100%">
+                <tr>
+                    <td><%= startupDate %>:</td>
+                    <td><input type="date" id="date1" required="required" name="date1"></td>
+                    <td>( 2014-05-20 )</td>
+                </tr>
+                <tr>
+                    <td><br></td>
+                    <td><br></td>
+                </tr>
+                <tr>
+                    <td><%= endDate %>:</td>
+                    <td><input type="date" id="date2" required="required" name="date2"></td>
+                    <td>( 2014-05-20 )</td>
+                </tr>
+                <tr>
+                    <td><br></td>
+                    <td><br></td>
+                </tr>
+            </table>
+            <table class="hovered">
+                <thead>
+                <tr>
+                    <th><%= userName %></th>
+                    <th><%= firstName %></th>
+                    <th><%= lastName %></th>
+                    <th><%= auth %></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <div style="clear: both;"></div>
+</div>

@@ -1,0 +1,8 @@
+    <% _.each(users, function(user){  %>
+    <tr>
+        <td class="UserIdClass" id="<%= user.get('userId') %>"><%= user.get('userName') %></td>
+        <td class="UserIdClass" id="<%= user.get('userId') %>"><%= user.get('firstName') %></td>
+        <td class="UserIdClass" id="<%= user.get('userId') %>"><%= user.get('lastName') %></td>
+        <td class="UserIdClass" id="<%= user.get('userId') %>"><%= user.get('authority') %></td>
+    </tr>
+    <% }); %>

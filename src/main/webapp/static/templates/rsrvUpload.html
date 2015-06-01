@@ -1,0 +1,46 @@
+<div id="container">
+    <div id="title"><%= title %></div>
+    <div id="rsrvupload">
+        <div id="rsrvupload_left">
+            <span style="color:#F30;"><%= userName %>:</span> <span id="reservation_username_span"></span><br><br>
+            <span style="color:#F30;"><%= firstName %> <%= and %> <%= lastName %>:</span> <span id="reservation_firstname_span"></span><br><br>
+            <span style="color:#F30;"><%= reservationDate %></span> <span id="reservation_date_span"></span><br><br>
+            <span style="color:#F30;"><%= reservation %>:</span><br><br><br>
+            <table>
+                <tr>
+                    <td><%= breakfast %></td>
+                    <td><input type="checkbox" class="breakfast"></td>
+                </tr>
+                <tr>
+                    <td><%= launch %></td>
+                    <td><input type="checkbox" class="launch"></td>
+                </tr>
+                <tr>
+                    <td><%= dinner %></td>
+                    <td><input type="checkbox" class="dinner"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;"><input type="button" id="rUpload" value="<%= save %>"></td>
+                </tr>
+            </table>
+        </div>
+        <div id="rsrvupload_right">
+            <%= date %>:<input type="date" id="date" required="required" name="date">( 2014-05-20 )<br><br>
+            <table class="hovered">
+                <thead>
+                <tr>
+                    <th><%= userName %></th>
+                    <th><%= firstName %></th>
+                    <th><%= lastName %></th>
+                    <th><%= auth %></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <div style="clear: both;"></div>
+</div>

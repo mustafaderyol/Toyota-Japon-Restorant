@@ -1,0 +1,489 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.bckgrnd{
+    position:absolute;
+    z-index:1 !important;
+    opacity:0.7;
+    filter:Alpha(opacity=70);
+    -moz-opacity:0.7;
+}
+.bckgrnd2{
+	position:absolute;
+	z-index:1 !important;
+	opacity:0.5;
+	filter:Alpha(opacity=50);
+	-moz-opacity:0.5;
+}
+.popupBckgrnd{
+    opacity:0.8;
+    filter:Alpha(opacity=80);
+    -moz-opacity:0.8;
+}
+#bg {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+}
+#lang_div
+{
+    position: absolute;
+    z-index: 150;
+    right: 10px;
+    top:2px;
+}
+.language_but
+{
+    float: left;
+    width: 35px;
+    padding: 2px;
+    background: #000 !important;
+    color: #FFF;
+    font-size: 12px;
+    margin-left: 2px;
+    margin-right: 2px;
+    text-align: center;
+    cursor: pointer;
+    border: 0px;
+}
+#loginform
+{
+	background: #1C1D20;
+	color: #FFF;
+	width: 400px;
+	height: 180px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-top: -95px;
+	margin-left: -205px;
+	z-index: 10;
+	padding: 10px;
+	text-align: center;
+	line-height: 30px;
+	box-shadow: 0 0 5px 5px #000;
+}
+#loginform h2
+{
+	font-size: 30px;
+}
+#header
+{
+	position: relative;
+	z-index: 5;
+}
+
+#header_in
+{
+	position: relative;
+	z-index: 15;
+	width: 100%;
+	height: 60px;
+	color:#FFF;
+	line-height: 70px !important;
+	padding-top:5px;
+	padding-bottom: 5px; 
+}
+#main_buttons
+{
+	float: right;
+	height: 60px;
+}
+ul.menu { 
+    list-style-type: none; 
+    padding: 0; 
+    margin: 0; 
+} 
+ul.menu li { 
+    display: inline; 
+    margin-left: 5px;
+    margin-right: 5px;
+} 
+ul.menu li a { 
+    text-decoration: none; 
+    padding: .2em 1em;
+    color: #1B1B1B;
+    background-color: #E2E2E2;
+} 
+ul.menu li a:hover
+{
+background-color: #FFF;
+}
+#main2_buttons
+{
+	position: relative;
+	z-index: 10;
+
+}
+#main2_buttons_in
+{
+	position: relative;
+	z-index: 15;
+	width: 100%;
+	height: 40px;
+    line-height: 35px;
+
+}
+.under
+{
+    font-size: 12px !important;
+    margin-top: 20px;
+}
+.saveandupdatebuton
+{
+    width: 130px;
+    color: #FFF !important;
+    background: #000 !important;
+    border:1px solid #FFF;
+    margin-bottom: 20px !important;
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    margin-left: -65px !important;
+}
+.button {
+    margin: 10px;
+    text-decoration: none;
+    font: bold 1.0em 'Trebuchet MS',Arial, Helvetica; /*Change the em value to scale the button*/
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+    border: 1px solid #9c9c9c; /* Fallback style */
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    text-shadow: 0 1px 0 rgba(0,0,0,0.4);
+    box-shadow: 0 0 .05em rgba(0,0,0,0.4);
+    border-radius: 0px !important;
+}
+
+.button,
+.button span {
+    -moz-border-radius: .3em;
+    border-radius: .3em;
+}
+
+.button span {
+    border-top: 1px solid #fff; /* Fallback style */
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    display: block;
+    border-radius: 0px !important;
+    padding: 0.2em 1.5em;
+    background: none;
+    /* The background pattern */
+    background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%, transparent);
+    linear-gradient(-45deg, rgba(0, 0, 0, 0.05) 25%, transparent 25%, transparent),
+    linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.05) 75%);
+
+    /* Pattern settings */
+    background-size: 3px 3px;
+}
+#main2_button
+{
+	margin-top:7px;
+	margin-left:3px;
+	margin-right:3px;
+	margin-bottom:0px;
+	color:#000;
+	font: bold 12px 'Trebuchet MS',Arial, Helvetica !important;
+    height: 26px;
+    line-height: 26px;
+    float:left;
+} 
+#main2_button:hover
+{
+	background: #FFF;
+    cursor: pointer;
+}
+#logo{
+    cursor: pointer;
+}
+/*Calendar*/
+.calendarTable {
+    background-color:#eee;
+    color:#333;
+    border: 1px solid #bbb;
+    width: 100%;
+}
+.calendarTable td {
+    text-align: center;
+    padding: 2px 4px 2px 4px;
+}
+.calendarTable td.monthHead {
+    font-weight: bold;
+    border: 1px solid #bbb;
+    background-color:#ddd;
+}
+.calendarTable td.weekDay {
+    font-weight: bold;
+}
+.calendarTable td.monthDay {
+    border: 1px solid #ddd;
+}
+.calendarTable td.currentDay {
+    font-weight: bold;
+    color:#ad5;
+    border: 1px solid #aaa;
+}
+#calendar_p_tag
+{
+    display:block;
+    width:120px;
+    margin:0 auto;
+    text-align:left;
+}
+.clndr
+{
+    position: relative;
+    z-index: 15;
+    color:#FFF;
+    width:100%;
+    text-align: center;
+}
+#container
+{
+    position: relative;
+    z-index: 15;
+    width:100%;
+    text-align: center;
+}
+/* rsrvupload */
+#rsrvupload
+{
+    width: 960px;
+    margin: 0 auto;
+}
+#rsrvupload_div{
+    float: left;
+    width: 916px;
+    border:1px solid #000;
+    background: #FFF;
+    text-align: left;
+    padding: 10px;
+}
+#rsrvupload_left
+{
+    float: left;
+    width: 458px;
+    border:1px solid #000;
+    background: #FFF;
+    text-align: left;
+    padding: 10px;
+
+}
+
+#rsrvupload_right
+{
+    float: left;
+    width: 458px;
+    border:1px solid #000;
+    background: #FFF;
+    text-align: left;
+    padding: 10px;
+
+}
+#rsrvquery
+{
+    width: 500px;
+    margin: 0 auto;
+}
+#rsrvquery_div{
+    float: left;
+    width: 446px;
+    border:1px solid #000;
+    background: #FFF;
+    text-align: left;
+    padding: 10px;
+}
+#title
+{
+    width: 100%;
+    height: 50px;
+    font-size: 30px;
+    text-align: center;
+    color:#F30;
+    line-height: 50px;
+}
+.hovered
+{
+    width: 100%;
+    text-align: center;
+}
+.hovered thead
+{
+    background: #CCC;
+    color: #F30;
+}
+.hovered th,.hovered td
+{
+    border: 1px solid #000;
+}
+.hovered tr:hover
+{
+    background:#CCC;
+    cursor: pointer;
+}
+
+#rsrvQuery_table
+{
+    width: 100%;
+    text-align: center;
+}
+#rsrvQuery_table thead
+{
+    background: #CCC;
+    color: #F30;
+}
+#rsrvQuery_table th,.rsrvQuery_table td
+{
+    border: 1px solid #000;
+}
+#rsrvQuery_table tr:hover
+{
+    background:#CCC;
+    cursor: pointer;
+}
+#rsrvQuery_table2
+{
+    width: 100%;
+    text-align: center;
+}
+#rsrvQuery_table2 th
+{
+    background: #CCC;
+    color: #F30;
+}
+#rsrvQuery_table2 th,#rsrvQuery_table2 td
+{
+    border: 1px solid #000;
+}
+
+
+.min-calendar-png:hover
+{
+    cursor:pointer;
+}
+#popupBack
+{
+    height: 25px;
+    line-height: 18px;
+}
+#popup
+{
+    position: fixed;
+    z-index: 25;
+    top: 50%;
+    left: 50%;
+    margin-top: -195px;
+    margin-left: -240px;
+    width: 490px;
+    height: 400px;
+    padding: 10px;
+}
+#popup img{
+    border:5px solid #000;
+}
+#popupdate
+{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #FFF;
+    font-size: 30px;
+}
+#popuptable
+{
+    width: 100%;
+    height: 300px;
+    color:#FFF;
+    text-align: center;
+    overflow-y: auto;
+}
+#popuptable th
+{
+    border:1px solid #FFF;
+    color:#F30;
+    font-size: 18px;
+    font-weight: bold;
+}
+#popuptable td
+{
+    border:1px solid #FFF;
+}
+#popuptable table
+{
+    width: 100%;
+}
+#welcome
+{
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    left: 50%;
+    margin-left: -250px;
+    text-align: left !important;
+    margin-top: 50px;
+}
+#welcome_ic
+ {
+     position: absolute;
+     z-index: 50;
+     width: 500px;
+     height: 300px;
+     text-align: center;
+     color: #FFF;
+     line-height: 45px;
+ }
+#loadingg
+{
+    position: absolute;
+    z-index: 50;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 100px;
+    margin-top: -50px;
+    margin-left: -150px;
+}
